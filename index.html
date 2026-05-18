@@ -6,139 +6,129 @@
   <title>Rag's Rags</title>
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: #030a1a; /* darker original navy */
-    }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #041a3a; /* richer saturated navy */
+  }
 
-    /* ===== HERO ===== */
-    .hero {
-      height: 100vh;
-      position: relative;
-      background: url("photo2.png") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+  /* ===== HERO SECTION ===== */
+  .hero {
+    height: 100vh;
+    position: relative;
+    background: url("photo2.png") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(3, 10, 26, 0.78); /* deeper navy overlay */
-    }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* deeper blue overlay (this is the key change) */
+    background: rgba(3, 25, 70, 0.72);
+  }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 25px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      font-size: 18px;
-      z-index: 3;
-    }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 18px;
+    z-index: 3;
+  }
 
-    .hero h1 {
-      font-size: 48px;
-      margin: 0;
-      letter-spacing: 3px;
-    }
+  .hero h1 {
+    font-size: 48px;
+    margin: 0;
+    letter-spacing: 3px;
+  }
 
-    .hero p {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #ddd;
-      max-width: 500px;
-    }
+  .hero p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #e6e6e6;
+    max-width: 500px;
+  }
 
-    /* BIGGER SCROLL ARROW */
-    .scroll {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 38px; /* bigger */
-      animation: bounce 1.5s infinite;
-      cursor: pointer;
-      z-index: 3;
-      opacity: 0.9;
-    }
+  /* Scroll arrow */
+  .scroll {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    animation: bounce 1.5s infinite;
+    z-index: 3;
+    cursor: pointer;
+  }
 
-    @keyframes bounce {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 12px); }
-    }
+  @keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 10px); }
+  }
 
-    /* ===== SHOP ===== */
-    .shop {
-      padding: 60px 40px;
-      background: #030a1a; /* match hero tone */
-    }
+  /* ===== PRODUCT GRID ===== */
+  .shop {
+    padding: 60px 40px;
+    background: #041a3a; /* match hero tone */
+  }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
 
-    .product {
-      text-align: center;
-    }
+  .product {
+    text-align: center;
+  }
 
-    .product img {
-      width: 100%;
-      max-width: 280px;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
+  .product img {
+    width: 100%;
+    max-width: 280px;
+    border: 1px solid rgba(255,255,255,0.22);
+  }
 
-    .product p {
-      margin-top: 10px;
-      font-size: 14px;
-    }
+  .product p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
 
-    /* CONTACT */
-    .contact {
-      text-align: center;
-      padding: 50px;
-      border-top: 1px solid rgba(255,255,255,0.15);
-    }
+  /* Contact */
+  .contact {
+    text-align: center;
+    padding: 50px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
 
-    .contact a {
-      color: white;
-      text-decoration: none;
-      border: 1px solid white;
-      padding: 12px 18px;
-      display: inline-block;
-      margin-top: 15px;
-    }
+  .contact a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 12px 18px;
+    display: inline-block;
+    margin-top: 15px;
+  }
 
-    .contact a:hover {
-      background: white;
-      color: #030a1a;
-    }
-
-    /* responsive */
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 600px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-
-  </style>
+  .contact a:hover {
+    background: white;
+    color: #041a3a;
+  }
+</style>
 </head>
 
 <body>

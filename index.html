@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rag's Rags</title>
 
-<!-- RANGERS-STYLE FONT -->
 <link href="https://db.onlinewebfonts.com/c/ce3e2c88798591d8ea995e084e8f9f62?family=NHL+NY+Rangers+Outline" rel="stylesheet">
 
 <style>
@@ -43,7 +42,7 @@ body {
   z-index: 2;
 }
 
-/* ===== STACKED LOGO (RANGERS STYLE) ===== */
+/* ===== TOP LEFT LOGO ===== */
 .logo {
   position: absolute;
   top: 20px;
@@ -51,12 +50,11 @@ body {
   z-index: 3;
   font-family: "NHL NY Rangers Outline", Arial, sans-serif;
   font-size: 20px;
-  font-weight: 700;
   letter-spacing: 2px;
   white-space: nowrap;
 }
 
-/* base white layer */
+/* white base */
 .logo .white {
   position: absolute;
   top: 0;
@@ -64,23 +62,42 @@ body {
   color: white;
 }
 
-/* red overlay layer (slight offset) */
+/* red overlay (UP-RIGHT OFFSET) */
 .logo .red {
   position: absolute;
-  top: 1px;
+  top: -1px;
   left: 1px;
   color: #CE1126;
 }
 
-/* HERO TEXT */
-.hero h1 {
-  font-size: 48px;
-  margin: 0;
+/* ===== HERO LOGO STYLE ===== */
+.hero-logo {
+  position: relative;
+  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
+  font-size: 52px;
   letter-spacing: 3px;
+  line-height: 1;
 }
 
+/* white base */
+.hero-logo .white {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+}
+
+/* red overlay (UP-RIGHT OFFSET) */
+.hero-logo .red {
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: #CE1126;
+}
+
+/* HERO TEXT */
 .hero p {
-  margin-top: 10px;
+  margin-top: 80px;
   font-size: 14px;
   color: #e6e6e6;
   max-width: 520px;
@@ -119,7 +136,7 @@ body {
   text-align: center;
 }
 
-/* FORCE SQUARE IMAGES */
+/* SQUARE IMAGES */
 .product img {
   width: 100%;
   max-width: 280px;
@@ -160,7 +177,7 @@ body {
 
 <body>
 
-<!-- BRAND LOGO -->
+<!-- TOP LEFT LOGO -->
 <div class="logo">
   <span class="white">RAG'S RAGS</span>
   <span class="red">RAG'S RAGS</span>
@@ -169,7 +186,13 @@ body {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h1>RAG'S RAGS</h1>
+
+    <!-- MAIN HERO LOGO (STACKED LIKE RANGERS) -->
+    <div class="hero-logo">
+      <span class="white">RAG'S RAGS</span>
+      <span class="red">RAG'S RAGS</span>
+    </div>
+
     <p>
       NY Hockey inspired streetwear. Prints on Comfort Colors blanks.
       Limited drops. Custom requests.

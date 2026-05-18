@@ -37,11 +37,12 @@ body {
   background: rgba(2, 22, 60, 0.72);
 }
 
-/* HERO TEXT WRAPPER (CENTER FIXED) */
+/* HERO TEXT WRAPPER */
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 600px;
+  padding: 0 20px;
 }
 
 /* ===== TOP LEFT LOGO ===== */
@@ -64,7 +65,7 @@ body {
   color: white;
 }
 
-/* red overlay (UP-RIGHT OFFSET) */
+/* red overlay (up-right offset) */
 .logo .red {
   position: absolute;
   top: -1px;
@@ -72,7 +73,7 @@ body {
   color: #CE1126;
 }
 
-/* HERO TEXT (BACK TO NORMAL) */
+/* ===== HERO TEXT ===== */
 .hero h1 {
   font-size: 48px;
   margin: 0;
@@ -83,9 +84,10 @@ body {
   margin-top: 10px;
   font-size: 14px;
   color: #e6e6e6;
+  line-height: 1.6;
 }
 
-/* scroll */
+/* ===== SCROLL ARROW ===== */
 .scroll {
   position: absolute;
   bottom: 25px;
@@ -100,6 +102,46 @@ body {
 @keyframes bounce {
   0%, 100% { transform: translate(-50%, 0); }
   50% { transform: translate(-50%, 10px); }
+}
+
+/* ===== TICKER ===== */
+.ticker {
+  background: #031946;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 14px 0;
+}
+
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: tickerScroll 120s linear infinite;
+  will-change: transform;
+}
+
+.ticker span {
+  display: inline-block;
+  margin-right: 70px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(91, 146, 255, 0.55); /* subtle lighter Rangers blue */
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ===== SHOP ===== */
@@ -118,7 +160,6 @@ body {
   text-align: center;
 }
 
-/* SQUARE IMAGES */
 .product img {
   width: 100%;
   max-width: 280px;
@@ -134,11 +175,12 @@ body {
   font-size: 14px;
 }
 
-/* CONTACT */
+/* ===== CONTACT ===== */
 .contact {
   text-align: center;
   padding: 50px;
   border-top: 1px solid rgba(255,255,255,0.18);
+  background: #031946;
 }
 
 .contact a {
@@ -148,11 +190,48 @@ body {
   padding: 12px 18px;
   display: inline-block;
   margin-top: 15px;
+  transition: all 0.2s ease;
 }
 
 .contact a:hover {
   background: white;
   color: #031946;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+
+  .shop {
+    padding: 40px 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticker span {
+    font-size: 11px;
+    margin-right: 50px;
+  }
+
+  .logo {
+    font-size: 16px;
+    top: 15px;
+    left: 18px;
+  }
 }
 </style>
 </head>
@@ -179,6 +258,44 @@ body {
     ↓
   </div>
 </section>
+
+<!-- SCROLLING TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>NO QUIT IN NEW YORK</span>
+    <span>BLEED BLUE</span>
+    <span>BROADWAY BLUESHIRT APPAREL</span>
+    <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span>
+    <span>DESIGNED IN MANHATTAN</span>
+    <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span>
+    <span>NEW YORK HOCKEY CULTURE</span>
+    <span>MADE FOR MSG NIGHTS</span>
+    <span>FOR THOSE WHO KNOW THE GARDEN</span>
+    <span>FOR THE FAITHFUL IN SECTION 222</span>
+    <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span>
+    <span>POTVIN SUCKS</span>
+    <span>SEE YOU AT PENN STATION</span>
+    <span>7 TRAIN TO THE GARDEN</span>
+    <span>ZIBANEJAD FROM THE LEFT CIRCLE</span>
+
+    <!-- Duplicate for seamless looping -->
+    <span>NO QUIT IN NEW YORK</span>
+    <span>BLEED BLUE</span>
+    <span>BROADWAY BLUESHIRT APPAREL</span>
+    <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span>
+    <span>DESIGNED IN MANHATTAN</span>
+    <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span>
+    <span>NEW YORK HOCKEY CULTURE</span>
+    <span>MADE FOR MSG NIGHTS</span>
+    <span>FOR THOSE WHO KNOW THE GARDEN</span>
+    <span>FOR THE FAITHFUL IN SECTION 222</span>
+    <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span>
+    <span>POTVIN SUCKS</span>
+    <span>SEE YOU AT PENN STATION</span>
+    <span>7 TRAIN TO THE GARDEN</span>
+    <span>ZIBANEJAD FROM THE LEFT CIRCLE</span>
+  </div>
+</div>
 
 <!-- SHOP -->
 <section class="shop" id="shop">
@@ -222,7 +339,7 @@ body {
   <h2>Order / Custom Requests</h2>
   <p>Email to purchase or request custom designs.</p>
 
-  <a href="finnestella222@gmail.com?subject=Rags%20Rags%20Order">
+  <a href="mailto:finnestella222@gmail.com?subject=Rags%20Rags%20Order">
     CONTACT
   </a>
 </div>

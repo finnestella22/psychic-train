@@ -14,7 +14,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-  background: #031946; /* MORE SATURATED ROYAL NAVY */
+  background: #031946;
 }
 
 /* ===== HERO ===== */
@@ -32,7 +32,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(2, 22, 60, 0.72); /* deeper, richer overlay */
+  background: rgba(2, 22, 60, 0.72);
 }
 
 .hero-content {
@@ -40,16 +40,37 @@ body {
   z-index: 2;
 }
 
-/* SIMPLE LOGO */
+/* ===== STACKED LOGO (RANGERS STYLE EFFECT) ===== */
 .logo {
   position: absolute;
   top: 20px;
   left: 25px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  font-size: 18px;
   z-index: 3;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+/* base white layer */
+.logo .white {
+  position: absolute;
+  top: 0;
+  left: 0;
   color: white;
+}
+
+/* red offset layer */
+.logo .red {
+  position: absolute;
+  top: 2px;   /* offset */
+  left: 2px;  /* offset */
+  color: #CE1126;
+}
+
+/* container sizing */
+.logo span {
+  display: block;
+  white-space: nowrap;
 }
 
 /* HERO TEXT */
@@ -86,7 +107,7 @@ body {
 /* ===== SHOP ===== */
 .shop {
   padding: 60px 40px;
-  background: #031946; /* match updated navy */
+  background: #031946;
 }
 
 .grid {
@@ -99,7 +120,7 @@ body {
   text-align: center;
 }
 
-/* SQUARE IMAGES */
+/* FORCE SQUARE IMAGES */
 .product img {
   width: 100%;
   max-width: 280px;
@@ -140,8 +161,13 @@ body {
 
 <body>
 
-<div class="logo">RAG'S RAGS</div>
+<!-- BRAND (STACKED LOGO) -->
+<div class="logo">
+  <span class="white">RAG'S RAGS</span>
+  <span class="red">RAG'S RAGS</span>
+</div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <h1>RAG'S RAGS</h1>
@@ -156,6 +182,7 @@ body {
   </div>
 </section>
 
+<!-- SHOP -->
 <section class="shop" id="shop">
   <div class="grid">
 
@@ -192,6 +219,7 @@ body {
   </div>
 </section>
 
+<!-- CONTACT -->
 <div class="contact">
   <h2>Order / Custom Requests</h2>
   <p>Email to purchase or request custom designs.</p>

@@ -1,204 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rag's Rags</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rag's Rags</title>
 
-  <style>
-  html {
-    scroll-behavior: smooth;
-  }
+<style>
+html {
+  scroll-behavior: smooth;
+}
 
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    background: #041a3a; /* richer saturated navy */
-  }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: #041a3a;
+}
 
-  /* ===== HERO SECTION ===== */
-  .hero {
-    height: 100vh;
-    position: relative;
-    background: url("photo2.png") center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
+/* ===== HERO ===== */
+.hero {
+  height: 100vh;
+  position: relative;
+  background: url("photo2.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    /* deeper blue overlay (this is the key change) */
-    background: rgba(3, 25, 70, 0.72);
-  }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 25, 70, 0.72);
+}
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-  }
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
 
-  .logo {
-    position: absolute;
-    top: 20px;
-    left: 25px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 18px;
-    z-index: 3;
-  }
+/* SIMPLE LOGO (BACK TO ORIGINAL STYLE) */
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 18px;
+  z-index: 3;
+  color: white;
+}
 
-  .hero h1 {
-    font-size: 48px;
-    margin: 0;
-    letter-spacing: 3px;
-  }
+/* HERO TEXT */
+.hero h1 {
+  font-size: 48px;
+  margin: 0;
+  letter-spacing: 3px;
+}
 
-  .hero p {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #e6e6e6;
-    max-width: 500px;
-  }
+.hero p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #e6e6e6;
+  max-width: 520px;
+}
 
-  /* Scroll arrow */
-  .scroll {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 28px;
-    animation: bounce 1.5s infinite;
-    z-index: 3;
-    cursor: pointer;
-  }
+/* scroll */
+.scroll {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  animation: bounce 1.5s infinite;
+  z-index: 3;
+  cursor: pointer;
+}
 
-  @keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, 10px); }
-  }
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
 
-  /* ===== PRODUCT GRID ===== */
-  .shop {
-    padding: 60px 40px;
-    background: #041a3a; /* match hero tone */
-  }
+/* ===== SHOP ===== */
+.shop {
+  padding: 60px 40px;
+  background: #041a3a;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
 
-  .product {
-    text-align: center;
-  }
+.product {
+  text-align: center;
+}
 
-  .product img {
-    width: 100%;
-    max-width: 280px;
-    border: 1px solid rgba(255,255,255,0.22);
-  }
+/* FORCE SQUARE IMAGES */
+.product img {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.22);
+  display: block;
+  margin: 0 auto;
+}
 
-  .product p {
-    margin-top: 10px;
-    font-size: 14px;
-  }
+.product p {
+  margin-top: 10px;
+  font-size: 14px;
+}
 
-  /* Contact */
-  .contact {
-    text-align: center;
-    padding: 50px;
-    border-top: 1px solid rgba(255,255,255,0.18);
-  }
+/* CONTACT */
+.contact {
+  text-align: center;
+  padding: 50px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
 
-  .contact a {
-    color: white;
-    text-decoration: none;
-    border: 1px solid white;
-    padding: 12px 18px;
-    display: inline-block;
-    margin-top: 15px;
-  }
+.contact a {
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 12px 18px;
+  display: inline-block;
+  margin-top: 15px;
+}
 
-  .contact a:hover {
-    background: white;
-    color: #041a3a;
-  }
+.contact a:hover {
+  background: white;
+  color: #041a3a;
+}
 </style>
 </head>
 
 <body>
 
-  <!-- BRAND -->
-  <div class="logo">RAG'S RAGS</div>
+<!-- BRAND -->
+<div class="logo">RAG'S RAGS</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>RAG'S RAGS</h1>
-      <p>
-        New York inspired hockey streetwear built on Comfort Colors blanks
-        and Gildan hoodies. Limited drops. Custom requests.
-      </p>
-    </div>
-
-    <div class="scroll" onclick="document.getElementById('shop').scrollIntoView()">
-      ↓
-    </div>
-  </section>
-
-  <!-- SHOP -->
-  <section class="shop" id="shop">
-
-    <div class="grid">
-
-      <div class="product">
-        <img src="photo3.png">
-        <p>NY Hockey Hoodie</p>
-      </div>
-
-      <div class="product">
-        <img src="photo4.png">
-        <p>Ragoos Flag</p>
-      </div>
-
-      <div class="product">
-        <img src="photo5.png">
-        <p>Nicks Six</p>
-      </div>
-
-      <div class="product">
-        <img src="photo6.png">
-        <p>51 at Half</p>
-      </div>
-
-      <div class="product">
-        <img src="photo7.png">
-        <p>Dropping Soon</p>
-      </div>
-
-      <div class="product">
-        <img src="photo8.png">
-        <p>Dropping Soon</p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-  <div class="contact">
-    <h2>Order / Custom Requests</h2>
-    <p>Email to purchase or request custom designs.</p>
-
-    <a href="mailto:yourname@gmail.com?subject=Rags%20Rags%20Order">
-      CONTACT
-    </a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>RAG'S RAGS</h1>
+    <p>
+      NY Hockey inspired streetwear. Prints on Comfort Colors blanks.
+      Limited drops. Custom requests.
+    </p>
   </div>
+
+  <div class="scroll" onclick="document.getElementById('shop').scrollIntoView()">
+    ↓
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="shop" id="shop">
+  <div class="grid">
+
+    <div class="product">
+      <img src="photo3.png">
+      <p>NY Hockey Hoodie</p>
+    </div>
+
+    <div class="product">
+      <img src="photo4.png">
+      <p>Ragoos Flag</p>
+    </div>
+
+    <div class="product">
+      <img src="photo5.png">
+      <p>Nicks Six</p>
+    </div>
+
+    <div class="product">
+      <img src="photo6.png">
+      <p>51 at Half</p>
+    </div>
+
+    <div class="product">
+      <img src="photo7.png">
+      <p>Dropping Soon</p>
+    </div>
+
+    <div class="product">
+      <img src="photo8.png">
+      <p>Dropping Soon</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact">
+  <h2>Order / Custom Requests</h2>
+  <p>Email to purchase or request custom designs.</p>
+
+  <a href="mailto:yourname@gmail.com?subject=Rags%20Rags%20Order">
+    CONTACT
+  </a>
+</div>
 
 </body>
 </html>

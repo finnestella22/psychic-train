@@ -14,10 +14,10 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: white;
-      background: #06122b; /* navy fallback */
+      background: #030a1a; /* darker original navy */
     }
 
-    /* ===== HERO SECTION ===== */
+    /* ===== HERO ===== */
     .hero {
       height: 100vh;
       position: relative;
@@ -32,12 +32,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(5, 10, 40, 0.75);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
+      background: rgba(3, 10, 26, 0.78); /* deeper navy overlay */
     }
 
     .logo {
@@ -48,6 +43,11 @@
       letter-spacing: 2px;
       font-size: 18px;
       z-index: 3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
@@ -63,27 +63,28 @@
       max-width: 500px;
     }
 
-    /* Scroll arrow */
+    /* BIGGER SCROLL ARROW */
     .scroll {
       position: absolute;
-      bottom: 25px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 28px;
+      font-size: 38px; /* bigger */
       animation: bounce 1.5s infinite;
-      z-index: 3;
       cursor: pointer;
+      z-index: 3;
+      opacity: 0.9;
     }
 
     @keyframes bounce {
       0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 10px); }
+      50% { transform: translate(-50%, 12px); }
     }
 
-    /* ===== PRODUCT GRID ===== */
+    /* ===== SHOP ===== */
     .shop {
       padding: 60px 40px;
-      background: #06122b;
+      background: #030a1a; /* match hero tone */
     }
 
     .grid {
@@ -99,7 +100,7 @@
     .product img {
       width: 100%;
       max-width: 280px;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
     .product p {
@@ -107,24 +108,11 @@
       font-size: 14px;
     }
 
-    /* Mobile responsive */
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Contact */
+    /* CONTACT */
     .contact {
       text-align: center;
       padding: 50px;
-      border-top: 1px solid rgba(255,255,255,0.2);
+      border-top: 1px solid rgba(255,255,255,0.15);
     }
 
     .contact a {
@@ -138,7 +126,16 @@
 
     .contact a:hover {
       background: white;
-      color: #06122b;
+      color: #030a1a;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
     }
 
   </style>
@@ -164,7 +161,7 @@
     </div>
   </section>
 
-  <!-- SHOP GRID -->
+  <!-- SHOP -->
   <section class="shop" id="shop">
 
     <div class="grid">
@@ -191,27 +188,12 @@
 
       <div class="product">
         <img src="photo7.png">
-        <p>Placeholder</p>
+        <p>Dropping Soon</p>
       </div>
 
       <div class="product">
         <img src="photo8.png">
-        <p>Placeholder</p>
-      </div>
-
-      <div class="product">
-        <img src="photo9.png">
-        <p>Placeholder</p>
-      </div>
-
-      <div class="product">
-        <img src="photo10.png">
-        <p>Placeholder</p>
-      </div>
-
-      <div class="product">
-        <img src="photo11.png">
-        <p>Placeholder</p>
+        <p>Dropping Soon</p>
       </div>
 
     </div>

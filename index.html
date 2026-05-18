@@ -115,20 +115,21 @@ body {
 }
 
 .ticker-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: tickerScroll 120s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 70s linear infinite;
   will-change: transform;
 }
 
-.ticker span {
+.ticker-track span {
   display: inline-block;
-  margin-right: 70px;
-  font-size: 12px;
+  margin-right: 60px;
+  font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-weight: 600;
-  color: rgba(91, 146, 255, 0.55); /* subtle lighter Rangers blue */
+  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
+  color: rgba(180, 210, 255, 0.85);
+  flex-shrink: 0;
 }
 
 .ticker:hover .ticker-track {
@@ -136,12 +137,8 @@ body {
 }
 
 @keyframes tickerScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ===== SHOP ===== */
@@ -222,9 +219,9 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .ticker span {
-    font-size: 11px;
-    margin-right: 50px;
+  .ticker-track span {
+    font-size: 13px;
+    margin-right: 40px;
   }
 
   .logo {
@@ -262,38 +259,137 @@ body {
 <!-- SCROLLING TICKER -->
 <div class="ticker">
   <div class="ticker-track">
+    <!-- First set -->
     <span>NO QUIT IN NEW YORK</span>
+    <span>✦</span>
+    <span>FIRE DRURY</span>
+    <span>✦</span>
     <span>BLEED BLUE</span>
+    <span>✦</span>
+    <span>WE'LL WIN TONIGHT</span>
+    <span>✦</span>
     <span>BROADWAY BLUESHIRT APPAREL</span>
+    <span>✦</span>
+    <span>NEXT QUESTION</span>
+    <span>✦</span>
     <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span>
+    <span>✦</span>
+    <span>SKATE BOYS!</span>
+    <span>✦</span>
     <span>DESIGNED IN MANHATTAN</span>
+    <span>✦</span>
+    <span>HANK I LOVE YOU!</span>
+    <span>✦</span>
     <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span>
+    <span>✦</span>
+    <span>RUN THE GOALIE</span>
+    <span>✦</span>
     <span>NEW YORK HOCKEY CULTURE</span>
+    <span>✦</span>
+    <span>RUN THE WORLD</span>
+    <span>✦</span>
     <span>MADE FOR MSG NIGHTS</span>
+    <span>✦</span>
+    <span>IGOR IGOR IGOR</span>
+    <span>✦</span>
     <span>FOR THOSE WHO KNOW THE GARDEN</span>
+    <span>✦</span>
+    <span>ZUUCCCCCCC</span>
+    <span>✦</span>
     <span>FOR THE FAITHFUL IN SECTION 222</span>
+    <span>✦</span>
+    <span>OH GOD JT MILLER AGAIN</span>
+    <span>✦</span>
     <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span>
+    <span>✦</span>
+    <span>BING BONG</span>
+    <span>✦</span>
     <span>POTVIN SUCKS</span>
+    <span>✦</span>
+    <span>GO NY GO NY GO</span>
+    <span>✦</span>
     <span>SEE YOU AT PENN STATION</span>
+    <span>✦</span>
+    <span>FUCK TRAE YOUNG</span>
+    <span>✦</span>
     <span>7 TRAIN TO THE GARDEN</span>
+    <span>✦</span>
+    <span>NOVA KNICKS</span>
+    <span>✦</span>
     <span>ZIBANEJAD FROM THE LEFT CIRCLE</span>
+    <span>✦</span>
+    <span>TIMBS WEATHER</span>
+    <span>✦</span>
+    <span>ITS A POWER PLAY GOAL</span>
+    <span>✦</span>
+    <span>TRADE CONOR SHEARY</span>
+    <span>✦</span>
 
-    <!-- Duplicate for seamless looping -->
+    <!-- Duplicate set — must be identical for seamless loop -->
     <span>NO QUIT IN NEW YORK</span>
+    <span>✦</span>
+    <span>FIRE DRURY</span>
+    <span>✦</span>
     <span>BLEED BLUE</span>
+    <span>✦</span>
+    <span>WE'LL WIN TONIGHT</span>
+    <span>✦</span>
     <span>BROADWAY BLUESHIRT APPAREL</span>
+    <span>✦</span>
+    <span>NEXT QUESTION</span>
+    <span>✦</span>
     <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span>
+    <span>✦</span>
+    <span>SKATE BOYS!</span>
+    <span>✦</span>
     <span>DESIGNED IN MANHATTAN</span>
+    <span>✦</span>
+    <span>HANK I LOVE YOU!</span>
+    <span>✦</span>
     <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span>
+    <span>✦</span>
+    <span>RUN THE GOALIE</span>
+    <span>✦</span>
     <span>NEW YORK HOCKEY CULTURE</span>
+    <span>✦</span>
+    <span>RUN THE WORLD</span>
+    <span>✦</span>
     <span>MADE FOR MSG NIGHTS</span>
+    <span>✦</span>
+    <span>IGOR IGOR IGOR</span>
+    <span>✦</span>
     <span>FOR THOSE WHO KNOW THE GARDEN</span>
+    <span>✦</span>
+    <span>ZUUCCCCCCC</span>
+    <span>✦</span>
     <span>FOR THE FAITHFUL IN SECTION 222</span>
+    <span>✦</span>
+    <span>OH GOD JT MILLER AGAIN</span>
+    <span>✦</span>
     <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span>
+    <span>✦</span>
+    <span>BING BONG</span>
+    <span>✦</span>
     <span>POTVIN SUCKS</span>
+    <span>✦</span>
+    <span>GO NY GO NY GO</span>
+    <span>✦</span>
     <span>SEE YOU AT PENN STATION</span>
+    <span>✦</span>
+    <span>FUCK TRAE YOUNG</span>
+    <span>✦</span>
     <span>7 TRAIN TO THE GARDEN</span>
+    <span>✦</span>
+    <span>NOVA KNICKS</span>
+    <span>✦</span>
     <span>ZIBANEJAD FROM THE LEFT CIRCLE</span>
+    <span>✦</span>
+    <span>TIMBS WEATHER</span>
+    <span>✦</span>
+    <span>ITS A POWER PLAY GOAL</span>
+    <span>✦</span>
+    <span>TRADE CONOR SHEARY</span>
+    <span>✦</span>
   </div>
 </div>
 

@@ -37,7 +37,8 @@ body {
   cursor: crosshair;
 }
 
-/* Photo + blue wash clipped to cursor circle */
+/* The spotlight layer — photo + blue wash clipped to a circle around the cursor.
+   clip-path starts offscreen so it's invisible until mouse moves in. */
 .hero-spotlight {
   position: absolute;
   inset: 0;
@@ -62,6 +63,7 @@ body {
   background: rgba(5, 20, 90, 0.4);
 }
 
+/* Bottom fade — sits above spotlight so gradient is always clean */
 .hero-gradient {
   pointer-events: none;
   position: absolute;
@@ -95,7 +97,11 @@ nav {
   border: 1px solid rgba(255,255,255,0.12);
 }
 
-.nav-shield { width: 22px; height: 22px; flex-shrink: 0; }
+.nav-shield {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
 
 .nav-logo-text {
   font-family: "NHL NY Rangers Outline", Arial, sans-serif;
@@ -117,7 +123,9 @@ nav {
   border: 1px solid rgba(255,255,255,0.12);
 }
 
-@media (min-width: 768px) { .nav-center { display: flex; } }
+@media (min-width: 768px) {
+  .nav-center { display: flex; }
+}
 
 .nav-center a {
   color: rgba(180, 210, 255, 0.8);
@@ -130,6 +138,7 @@ nav {
   text-transform: lowercase;
   letter-spacing: 0.3px;
 }
+
 .nav-center a:hover { color: #fff; }
 
 .nav-right {
@@ -145,9 +154,10 @@ nav {
   transition: background 0.2s;
   white-space: nowrap;
 }
+
 .nav-right:hover { background: #d6e4ff; }
 
-/* ===== HERO TEXT ===== */
+/* ===== HERO FOREGROUND TEXT ===== */
 .hero-fg {
   position: absolute;
   inset: 0;
@@ -162,7 +172,10 @@ nav {
   text-transform: uppercase;
   text-shadow: 0 2px 30px rgba(0,0,0,0.6);
 }
-@media (min-width: 768px) { .hero-word { font-size: 13vw; } }
+
+@media (min-width: 768px) {
+  .hero-word { font-size: 13vw; }
+}
 
 .word-1 { left: 3%; top: 16%; }
 .word-2 { right: 3%; top: 37%; }
@@ -183,22 +196,41 @@ nav {
   line-height: 1.55;
   color: rgba(255,255,255,0.75);
   font-weight: 300;
+  letter-spacing: 0.2px;
 }
-@media (min-width: 768px) { .hero-desc { left: 2.5%; max-width: 240px; font-size: 14px; } }
 
-/* ===== STATS ===== */
+@media (min-width: 768px) {
+  .hero-desc { left: 2.5%; max-width: 240px; font-size: 14px; }
+}
+
+/* ===== STAT BLOCKS ===== */
 .stat { position: absolute; }
 
-.stat-top-right { top: 13%; right: 20px; text-align: right; }
+.stat-top-right {
+  top: 13%;
+  right: 20px;
+  text-align: right;
+}
 @media (min-width: 768px) { .stat-top-right { right: 96px; } }
 
-.stat-bottom-left { bottom: 72px; left: 20px; }
+.stat-bottom-left {
+  bottom: 72px;
+  left: 20px;
+}
 @media (min-width: 768px) { .stat-bottom-left { left: 80px; bottom: 96px; } }
 
-.stat-bottom-right { bottom: 56px; right: 20px; text-align: right; }
+.stat-bottom-right {
+  bottom: 56px;
+  right: 20px;
+  text-align: right;
+}
 @media (min-width: 768px) { .stat-bottom-right { right: 80px; bottom: 80px; } }
 
-.stat-row { display: flex; align-items: center; gap: 12px; }
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .stat-row.right { justify-content: flex-end; }
 
 .stat-num {
@@ -208,7 +240,13 @@ nav {
   line-height: 1;
 }
 
-.stat-divider { display: none; height: 1px; width: 80px; background: rgba(255,255,255,0.35); flex-shrink: 0; }
+.stat-divider {
+  display: none;
+  height: 1px;
+  width: 80px;
+  background: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
 @media (min-width: 768px) { .stat-divider { display: block; } }
 
 .rot-pos { transform: rotate(20deg); }
@@ -259,7 +297,10 @@ nav {
 }
 
 /* ===== SHOP ===== */
-.shop { padding: 80px 32px; background: #000; }
+.shop {
+  padding: 80px 32px;
+  background: #000;
+}
 @media (max-width: 600px) { .shop { padding: 60px 16px; } }
 
 .shop-header {
@@ -282,3 +323,364 @@ nav {
   font-size: 11px;
   color: rgba(255,255,255,0.4);
   text-transform: uppercase;
+  letter-spacing: 2.5px;
+  white-space: nowrap;
+  font-weight: 300;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px)  { .grid { grid-template-columns: 1fr; } }
+
+.product { overflow: hidden; background: #080808; }
+
+.product-img-wrap { overflow: hidden; }
+
+.product img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.product:hover img { transform: scale(1.05); }
+
+.product-info { padding: 14px 14px 16px; }
+
+.product-name {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.product-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  padding: 100px 32px 80px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  background: #000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) { .contact { padding: 60px 20px; flex-direction: column; } }
+
+.contact-left h2 {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-end;
+  padding-top: 12px;
+}
+@media (max-width: 600px) { .contact-right { align-items: flex-start; } }
+
+.contact-right p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  text-align: right;
+  max-width: 280px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+@media (max-width: 600px) { .contact-right p { text-align: left; } }
+
+.btn-primary {
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 16px 36px;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: #d6e4ff; }
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 22px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #000;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-logo {
+  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+
+  <!-- Photo + blue wash clipped to cursor circle -->
+  <div class="hero-spotlight" id="heroSpotlight">
+    <img class="hero-bg" src="photo2.png" alt="RAG'S RAGS">
+    <div class="hero-blue-wash"></div>
+  </div>
+
+  <!-- Bottom fade always visible -->
+  <div class="hero-gradient"></div>
+
+  <!-- Navbar always on top -->
+  <nav>
+    <div class="nav-left">
+      <svg class="nav-shield" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 1L2 7v11c0 9 6 16 14 17 8-1 14-8 14-17V7L16 1z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4"/>
+        <text x="7.5" y="22" fill="white" font-size="10" font-weight="700" font-family="Arial, sans-serif">NY</text>
+      </svg>
+      <span class="nav-logo-text">RAG'S RAGS</span>
+    </div>
+    <div class="nav-center">
+      <a href="#shop">shop</a>
+      <a href="#shop">drops</a>
+      <a href="mailto:finnestella222@gmail.com?subject=Custom%20Design%20Request">custom</a>
+      <a href="#contact">contact</a>
+    </div>
+    <a class="nav-right" href="mailto:finnestella222@gmail.com?subject=Rags%20Rags%20Order">Order Now</a>
+  </nav>
+
+  <!-- Text always on top -->
+  <div class="hero-fg">
+    <h1 class="hero-title hero-word word-1">BLEED</h1>
+    <h1 class="hero-title hero-word word-2">BLUE</h1>
+    <h1 class="hero-title hero-word word-3">NYC</h1>
+
+    <p class="hero-desc">NY hockey streetwear. Prints on Comfort Colors blanks. Limited drops. Custom requests.</p>
+
+    <div class="stat stat-top-right">
+      <div class="stat-row right">
+        <div class="stat-divider rot-pos"></div>
+        <span class="stat-num">1994</span>
+      </div>
+      <p class="stat-label">we remember</p>
+    </div>
+
+    <div class="stat stat-bottom-left">
+      <div class="stat-row">
+        <span class="stat-num">1926</span>
+        <div class="stat-divider rot-neg"></div>
+      </div>
+      <p class="stat-label">new york rangers</p>
+    </div>
+
+    <div class="stat stat-bottom-right">
+      <div class="stat-row right">
+        <div class="stat-divider rot-neg"></div>
+        <span class="stat-num">222</span>
+      </div>
+      <p class="stat-label">section faithful</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== SCROLLING TICKER ===== -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>NO QUIT IN NEW YORK</span><span>✦</span>
+    <span>FIRE DRURY</span><span>✦</span>
+    <span>BLEED BLUE</span><span>✦</span>
+    <span>WE'LL WIN TONIGHT</span><span>✦</span>
+    <span>BROADWAY BLUESHIRT APPAREL</span><span>✦</span>
+    <span>NEXT QUESTION</span><span>✦</span>
+    <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span><span>✦</span>
+    <span>SKATE BOYS!</span><span>✦</span>
+    <span>DESIGNED IN MANHATTAN</span><span>✦</span>
+    <span>HANK I LOVE YOU!</span><span>✦</span>
+    <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span><span>✦</span>
+    <span>RUN THE GOALIE</span><span>✦</span>
+    <span>NEW YORK HOCKEY CULTURE</span><span>✦</span>
+    <span>MADE FOR MSG NIGHTS</span><span>✦</span>
+    <span>IGOR IGOR IGOR</span><span>✦</span>
+    <span>FOR THOSE WHO KNOW THE GARDEN</span><span>✦</span>
+    <span>ZUUCCCCCCC</span><span>✦</span>
+    <span>FOR THE FAITHFUL IN SECTION 222</span><span>✦</span>
+    <span>OH GOD JT MILLER AGAIN</span><span>✦</span>
+    <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span><span>✦</span>
+    <span>BING BONG</span><span>✦</span>
+    <span>POTVIN SUCKS</span><span>✦</span>
+    <span>GO NY GO NY GO</span><span>✦</span>
+    <span>SEE YOU AT PENN STATION</span><span>✦</span>
+    <span>7 TRAIN TO THE GARDEN</span><span>✦</span>
+    <span>ZIBANEJAD FROM THE LEFT CIRCLE</span><span>✦</span>
+    <span>TIMBS WEATHER</span><span>✦</span>
+    <span>ITS A POWER PLAY GOAL</span><span>✦</span>
+    <span>TRADE CONOR SHEARY</span><span>✦</span>
+    <span>NO QUIT IN NEW YORK</span><span>✦</span>
+    <span>FIRE DRURY</span><span>✦</span>
+    <span>BLEED BLUE</span><span>✦</span>
+    <span>WE'LL WIN TONIGHT</span><span>✦</span>
+    <span>BROADWAY BLUESHIRT APPAREL</span><span>✦</span>
+    <span>NEXT QUESTION</span><span>✦</span>
+    <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span><span>✦</span>
+    <span>SKATE BOYS!</span><span>✦</span>
+    <span>DESIGNED IN MANHATTAN</span><span>✦</span>
+    <span>HANK I LOVE YOU!</span><span>✦</span>
+    <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span><span>✦</span>
+    <span>RUN THE GOALIE</span><span>✦</span>
+    <span>NEW YORK HOCKEY CULTURE</span><span>✦</span>
+    <span>MADE FOR MSG NIGHTS</span><span>✦</span>
+    <span>IGOR IGOR IGOR</span><span>✦</span>
+    <span>FOR THOSE WHO KNOW THE GARDEN</span><span>✦</span>
+    <span>ZUUCCCCCCC</span><span>✦</span>
+    <span>FOR THE FAITHFUL IN SECTION 222</span><span>✦</span>
+    <span>OH GOD JT MILLER AGAIN</span><span>✦</span>
+    <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span><span>✦</span>
+    <span>BING BONG</span><span>✦</span>
+    <span>POTVIN SUCKS</span><span>✦</span>
+    <span>GO NY GO NY GO</span><span>✦</span>
+    <span>SEE YOU AT PENN STATION</span><span>✦</span>
+    <span>7 TRAIN TO THE GARDEN</span><span>✦</span>
+    <span>ZIBANEJAD FROM THE LEFT CIRCLE</span><span>✦</span>
+    <span>TIMBS WEATHER</span><span>✦</span>
+    <span>ITS A POWER PLAY GOAL</span><span>✦</span>
+    <span>TRADE CONOR SHEARY</span><span>✦</span>
+  </div>
+</div>
+
+<!-- ===== SHOP ===== -->
+<section class="shop" id="shop">
+  <div class="shop-header">
+    <h2>The Drop</h2>
+    <span>Limited Releases</span>
+  </div>
+  <div class="grid">
+    <div class="product">
+      <div class="product-img-wrap"><img src="photo3.png" alt="NY Hockey Hoodie"></div>
+      <div class="product-info">
+        <div class="product-name">NY Hockey Hoodie</div>
+        <div class="product-sub">Limited Drop</div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-img-wrap"><img src="photo4.png" alt="Ragoos Flag"></div>
+      <div class="product-info">
+        <div class="product-name">Ragoos Flag</div>
+        <div class="product-sub">Limited Drop</div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-img-wrap"><img src="photo5.png" alt="Nicks Six"></div>
+      <div class="product-info">
+        <div class="product-name">Nicks Six</div>
+        <div class="product-sub">Limited Drop</div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-img-wrap"><img src="photo6.png" alt="51 at Half"></div>
+      <div class="product-info">
+        <div class="product-name">51 at Half</div>
+        <div class="product-sub">Limited Drop</div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-img-wrap"><img src="photo7.png" alt="Coming Soon"></div>
+      <div class="product-info">
+        <div class="product-name">Dropping Soon</div>
+        <div class="product-sub">Stay Ready</div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-img-wrap"><img src="photo8.png" alt="Coming Soon"></div>
+      <div class="product-info">
+        <div class="product-name">Dropping Soon</div>
+        <div class="product-sub">Stay Ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<div class="contact" id="contact">
+  <div class="contact-left">
+    <h2>Order.<br>Custom.<br>Now.</h2>
+  </div>
+  <div class="contact-right">
+    <p>Email to purchase or drop a custom design request. Built for MSG nights.</p>
+    <a class="btn-primary" href="mailto:finnestella222@gmail.com?subject=Rags%20Rags%20Order">Contact Us</a>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <span class="footer-logo">RAG'S RAGS</span>
+  <span class="footer-copy">© 2024 Rag's Rags — NY Hockey Culture</span>
+</footer>
+
+<script>
+(function () {
+  const hero     = document.getElementById('hero');
+  const spotlight = document.getElementById('heroSpotlight');
+  if (!hero || !spotlight) return;
+
+  const R = 270; // reveal radius in px
+
+  function update(x, y) {
+    spotlight.style.clipPath = `circle(${R}px at ${x}px ${y}px)`;
+  }
+
+  function hide() {
+    spotlight.style.clipPath = 'circle(0px at -999px -999px)';
+  }
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    update(e.clientX - rect.left, e.clientY - rect.top);
+  });
+
+  hero.addEventListener('mouseleave', hide);
+
+  hero.addEventListener('touchmove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const t = e.touches[0];
+    update(t.clientX - rect.left, t.clientY - rect.top);
+  }, { passive: true });
+
+  hero.addEventListener('touchend', hide);
+})();
+</script>
+
+</body>
+</html>

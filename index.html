@@ -3,442 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rag's Rags</title>
+<title>Rag's Rags — NY Hockey Streetwear</title>
+<meta name="description" content="NY Hockey inspired streetwear. Limited drops. Custom requests. Built for MSG nights.">
+<meta name="keywords" content="New York hockey apparel, NY hockey streetwear, hockey hoodie, MSG apparel, Broadway Blueshirts">
 
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://db.onlinewebfonts.com/c/ce3e2c88798591d8ea995e084e8f9f62?family=NHL+NY+Rangers+Outline" rel="stylesheet">
 
 <style>
-html {
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root { height: 100%; }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: #031946;
+  font-family: 'Readex Pro', system-ui, -apple-system, sans-serif;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-title {
+  letter-spacing: -0.04em;
+  line-height: 0.95;
 }
 
 /* ===== HERO ===== */
 .hero {
-  height: 100vh;
   position: relative;
-  background: url("photo2.png") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
 }
 
-.hero::before {
-  content: "";
+.hero-bg {
   position: absolute;
   inset: 0;
-  background: rgba(2, 22, 60, 0.72);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.75) saturate(0.8) hue-rotate(195deg) contrast(0.95);
 }
 
-/* HERO TEXT WRAPPER */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 600px;
-  padding: 0 20px;
-}
-
-/* ===== TOP LEFT LOGO ===== */
-.logo {
+.hero-blue-wash {
   position: absolute;
-  top: 20px;
-  left: 25px;
-  z-index: 3;
-  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
-  font-size: 20px;
-  letter-spacing: 2px;
-  white-space: nowrap;
+  inset: 0;
+  background: rgba(5, 20, 80, 0.45);
+  pointer-events: none;
 }
 
-/* base white */
-.logo .white {
+.hero-mask {
   position: absolute;
-  top: 0;
-  left: 0;
-  color: white;
+  inset: 0;
+  background: black;
+  pointer-events: none;
+  transition: background 0.05s;
 }
 
-/* red overlay (up-right offset) */
-.logo .red {
+.hero-overlay {
   position: absolute;
-  top: -1px;
-  left: 1px;
-  color: #CE1126;
+  inset: 0;
+  pointer-events: none;
 }
 
-/* ===== HERO TEXT ===== */
-.hero h1 {
-  font-size: 48px;
-  margin: 0;
-  letter-spacing: 3px;
-}
-
-.hero p {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #e6e6e6;
-  line-height: 1.6;
-}
-
-/* ===== SCROLL ARROW ===== */
-.scroll {
+/* ===== NAVBAR ===== */
+nav {
   position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  animation: bounce 1.5s infinite;
-  z-index: 3;
-  cursor: pointer;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 10px); }
-}
-
-/* ===== TICKER ===== */
-.ticker {
-  background: #031946;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 14px 0;
-}
-
-.ticker-track {
+  top: 0; left: 0; right: 0;
+  z-index: 20;
+  padding: 24px 24px 0;
   display: flex;
-  width: max-content;
-  animation: tickerScroll 70s linear infinite;
-  will-change: transform;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.ticker-track span {
-  display: inline-block;
-  margin-right: 60px;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
-  color: rgba(180, 210, 255, 0.85);
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(3, 25, 70, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 9999px;
+  padding: 10px 22px 10px 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.nav-shield {
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
 }
 
-.ticker:hover .ticker-track {
-  animation-play-state: paused;
+.nav-logo-text {
+  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  color: #fff;
+  white-space: nowrap;
 }
 
-@keyframes tickerScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.nav-center {
+  display: none;
+  align-items: center;
+  gap: 2px;
+  background: rgba(3, 25, 70, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 9999px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
-/* ===== SHOP ===== */
-.shop {
-  padding: 60px 40px;
-  background: #031946;
+@media (min-width: 768px) {
+  .nav-center { display: flex; }
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.product {
-  text-align: center;
-}
-
-.product img {
-  width: 100%;
-  max-width: 280px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.22);
-  display: block;
-  margin: 0 auto;
-}
-
-.product p {
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-/* ===== CONTACT ===== */
-.contact {
-  text-align: center;
-  padding: 50px;
-  border-top: 1px solid rgba(255,255,255,0.18);
-  background: #031946;
-}
-
-.contact a {
-  color: white;
+.nav-center a {
+  color: rgba(180, 210, 255, 0.8);
   text-decoration: none;
-  border: 1px solid white;
-  padding: 12px 18px;
-  display: inline-block;
-  margin-top: 15px;
-  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 7px 18px;
+  border-radius: 9999px;
+  transition: color 0.2s;
+  text-transform: lowercase;
+  letter-spacing: 0.3px;
 }
 
-.contact a:hover {
-  background: white;
+.nav-center a:hover { color: #fff; }
+
+.nav-right {
+  background: #fff;
   color: #031946;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 11px 24px;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.nav-right:hover { background: #d6e4ff; }
+
+/* ===== HERO FOREGROUND ===== */
+.hero-fg {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 36px;
-  }
-
-  .hero p {
-    font-size: 13px;
-  }
-
-  .shop {
-    padding: 40px 20px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ticker-track span {
-    font-size: 13px;
-    margin-right: 40px;
-  }
-
-  .logo {
-    font-size: 16px;
-    top: 15px;
-    left: 18px;
-  }
+.hero-word {
+  position: absolute;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16vw;
+  text-transform: uppercase;
+  text-shadow: 0 4px 40px rgba(0,0,0,0.5);
 }
-</style>
-</head>
 
-<body>
+@media (min-width: 768px) {
+  .hero-word { font-size: 13vw; }
+}
 
-<!-- TOP LEFT LOGO -->
-<div class="logo">
-  <span class="white">RAG'S RAGS</span>
-  <span class="red">RAG'S RAGS</span>
-</div>
+.word-1 { left: 3%; top: 16%; }
+.word-2 { right: 3%; top: 37%; }
+.word-3 { left: 18%; top: 57%; }
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>RAG'S RAGS</h1>
-    <p>
-      NY Hockey inspired streetwear. Prints on Comfort Colors blanks.
-      Limited drops. Custom requests.
-    </p>
-  </div>
+@media (min-width: 768px) {
+  .word-1 { left: 2.5%; top: 18%; }
+  .word-2 { right: 2.5%; top: 38%; }
+  .word-3 { left: 26%; top: 58%; }
+}
 
-  <div class="scroll" onclick="document.getElementById('shop').scrollIntoView()">
-    ↓
-  </div>
-</section>
+.hero-desc {
+  position: absolute;
+  left: 20px;
+  top: 45%;
+  max-width: 210px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.80);
+  font-weight: 300;
+  letter-spacing: 0.2px;
+}
 
-<!-- SCROLLING TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <!-- First set -->
-    <span>NO QUIT IN NEW YORK</span>
-    <span>✦</span>
-    <span>FIRE DRURY</span>
-    <span>✦</span>
-    <span>BLEED BLUE</span>
-    <span>✦</span>
-    <span>WE'LL WIN TONIGHT</span>
-    <span>✦</span>
-    <span>BROADWAY BLUESHIRT APPAREL</span>
-    <span>✦</span>
-    <span>NEXT QUESTION</span>
-    <span>✦</span>
-    <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span>
-    <span>✦</span>
-    <span>SKATE BOYS!</span>
-    <span>✦</span>
-    <span>DESIGNED IN MANHATTAN</span>
-    <span>✦</span>
-    <span>HANK I LOVE YOU!</span>
-    <span>✦</span>
-    <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span>
-    <span>✦</span>
-    <span>RUN THE GOALIE</span>
-    <span>✦</span>
-    <span>NEW YORK HOCKEY CULTURE</span>
-    <span>✦</span>
-    <span>RUN THE WORLD</span>
-    <span>✦</span>
-    <span>MADE FOR MSG NIGHTS</span>
-    <span>✦</span>
-    <span>IGOR IGOR IGOR</span>
-    <span>✦</span>
-    <span>FOR THOSE WHO KNOW THE GARDEN</span>
-    <span>✦</span>
-    <span>ZUUCCCCCCC</span>
-    <span>✦</span>
-    <span>FOR THE FAITHFUL IN SECTION 222</span>
-    <span>✦</span>
-    <span>OH GOD JT MILLER AGAIN</span>
-    <span>✦</span>
-    <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span>
-    <span>✦</span>
-    <span>BING BONG</span>
-    <span>✦</span>
-    <span>POTVIN SUCKS</span>
-    <span>✦</span>
-    <span>GO NY GO NY GO</span>
-    <span>✦</span>
-    <span>SEE YOU AT PENN STATION</span>
-    <span>✦</span>
-    <span>FUCK TRAE YOUNG</span>
-    <span>✦</span>
-    <span>7 TRAIN TO THE GARDEN</span>
-    <span>✦</span>
-    <span>NOVA KNICKS</span>
-    <span>✦</span>
-    <span>ZIBANEJAD FROM THE LEFT CIRCLE</span>
-    <span>✦</span>
-    <span>TIMBS WEATHER</span>
-    <span>✦</span>
-    <span>ITS A POWER PLAY GOAL</span>
-    <span>✦</span>
-    <span>TRADE CONOR SHEARY</span>
-    <span>✦</span>
+@media (min-width: 768px) {
+  .hero-desc { left: 2.5%; max-width: 240px; font-size: 14px; }
+}
 
-    <!-- Duplicate set — must be identical for seamless loop -->
-    <span>NO QUIT IN NEW YORK</span>
-    <span>✦</span>
-    <span>FIRE DRURY</span>
-    <span>✦</span>
-    <span>BLEED BLUE</span>
-    <span>✦</span>
-    <span>WE'LL WIN TONIGHT</span>
-    <span>✦</span>
-    <span>BROADWAY BLUESHIRT APPAREL</span>
-    <span>✦</span>
-    <span>NEXT QUESTION</span>
-    <span>✦</span>
-    <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span>
-    <span>✦</span>
-    <span>SKATE BOYS!</span>
-    <span>✦</span>
-    <span>DESIGNED IN MANHATTAN</span>
-    <span>✦</span>
-    <span>HANK I LOVE YOU!</span>
-    <span>✦</span>
-    <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span>
-    <span>✦</span>
-    <span>RUN THE GOALIE</span>
-    <span>✦</span>
-    <span>NEW YORK HOCKEY CULTURE</span>
-    <span>✦</span>
-    <span>RUN THE WORLD</span>
-    <span>✦</span>
-    <span>MADE FOR MSG NIGHTS</span>
-    <span>✦</span>
-    <span>IGOR IGOR IGOR</span>
-    <span>✦</span>
-    <span>FOR THOSE WHO KNOW THE GARDEN</span>
-    <span>✦</span>
-    <span>ZUUCCCCCCC</span>
-    <span>✦</span>
-    <span>FOR THE FAITHFUL IN SECTION 222</span>
-    <span>✦</span>
-    <span>OH GOD JT MILLER AGAIN</span>
-    <span>✦</span>
-    <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span>
-    <span>✦</span>
-    <span>BING BONG</span>
-    <span>✦</span>
-    <span>POTVIN SUCKS</span>
-    <span>✦</span>
-    <span>GO NY GO NY GO</span>
-    <span>✦</span>
-    <span>SEE YOU AT PENN STATION</span>
-    <span>✦</span>
-    <span>FUCK TRAE YOUNG</span>
-    <span>✦</span>
-    <span>7 TRAIN TO THE GARDEN</span>
-    <span>✦</span>
-    <span>NOVA KNICKS</span>
-    <span>✦</span>
-    <span>ZIBANEJAD FROM THE LEFT CIRCLE</span>
-    <span>✦</span>
-    <span>TIMBS WEATHER</span>
-    <span>✦</span>
-    <span>ITS A POWER PLAY GOAL</span>
-    <span>✦</span>
-    <span>TRADE CONOR SHEARY</span>
-    <span>✦</span>
-  </div>
-</div>
+.hero-gradient {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  background: linear-gradient(to bottom, transparent, #000);
+}
 
-<!-- SHOP -->
-<section class="shop" id="shop">
-  <div class="grid">
+/* ===== STAT BLOCKS ===== */
+.stat { position: absolute; }
 
-    <div class="product">
-      <img src="photo3.png">
-      <p>NY Hockey Hoodie</p>
-    </div>
+.stat-top-right {
+  top: 13%;
+  right: 20px;
+  text-align: right;
+}
 
-    <div class="product">
-      <img src="photo4.png">
-      <p>Ragoos Flag</p>
-    </div>
+@media (min-width: 768px) { .stat-top-right { right: 96px; } }
 
-    <div class="product">
-      <img src="photo5.png">
-      <p>Nicks Six</p>
-    </div>
+.stat-bottom-left {
+  bottom: 72px;
+  left: 20px;
+}
 
-    <div class="product">
-      <img src="photo6.png">
-      <p>51 at Half</p>
-    </div>
-
-    <div class="product">
-      <img src="photo7.png">
-      <p>Dropping Soon</p>
-    </div>
-
-    <div class="product">
-      <img src="photo8.png">
-      <p>Dropping Soon</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<div class="contact">
-  <h2>Order / Custom Requests</h2>
-  <p>Email to purchase or request custom designs.</p>
-
-  <a href="mailto:finnestella222@gmail.com?subject=Rags%20Rags%20Order">
-    CONTACT
-  </a>
-</div>
-
-</body>
-</html>
+@media (min-width: 768px) {

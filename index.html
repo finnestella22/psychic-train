@@ -12,8 +12,7 @@
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body, #root { height: 100%; }
+html, body { height: 100%; }
 
 body {
   font-family: 'Readex Pro', system-ui, -apple-system, sans-serif;
@@ -35,6 +34,16 @@ body {
   width: 100%;
   overflow: hidden;
   background: #000;
+  cursor: crosshair;
+}
+
+/* Photo + blue wash clipped to cursor circle */
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  clip-path: circle(0px at -999px -999px);
+  transition: clip-path 0.12s ease-out;
 }
 
 .hero-bg {
@@ -44,28 +53,22 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  filter: brightness(0.75) saturate(0.8) hue-rotate(195deg) contrast(0.95);
+  filter: brightness(0.7) saturate(0.75) hue-rotate(200deg) contrast(0.9);
 }
 
 .hero-blue-wash {
   position: absolute;
   inset: 0;
-  background: rgba(5, 20, 80, 0.45);
-  pointer-events: none;
+  background: rgba(5, 20, 90, 0.4);
 }
 
-.hero-mask {
-  position: absolute;
-  inset: 0;
-  background: black;
+.hero-gradient {
   pointer-events: none;
-  transition: background 0.05s;
-}
-
-.hero-overlay {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
+  bottom: 0; left: 0; right: 0;
+  height: 240px;
+  background: linear-gradient(to bottom, transparent, #000);
+  z-index: 2;
 }
 
 /* ===== NAVBAR ===== */
@@ -92,11 +95,7 @@ nav {
   border: 1px solid rgba(255,255,255,0.12);
 }
 
-.nav-shield {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-}
+.nav-shield { width: 22px; height: 22px; flex-shrink: 0; }
 
 .nav-logo-text {
   font-family: "NHL NY Rangers Outline", Arial, sans-serif;
@@ -118,9 +117,7 @@ nav {
   border: 1px solid rgba(255,255,255,0.12);
 }
 
-@media (min-width: 768px) {
-  .nav-center { display: flex; }
-}
+@media (min-width: 768px) { .nav-center { display: flex; } }
 
 .nav-center a {
   color: rgba(180, 210, 255, 0.8);
@@ -133,7 +130,6 @@ nav {
   text-transform: lowercase;
   letter-spacing: 0.3px;
 }
-
 .nav-center a:hover { color: #fff; }
 
 .nav-right {
@@ -149,14 +145,13 @@ nav {
   transition: background 0.2s;
   white-space: nowrap;
 }
-
 .nav-right:hover { background: #d6e4ff; }
 
-/* ===== HERO FOREGROUND ===== */
+/* ===== HERO TEXT ===== */
 .hero-fg {
-  position: relative;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
 }
 
 .hero-word {
@@ -165,12 +160,9 @@ nav {
   font-weight: 700;
   font-size: 16vw;
   text-transform: uppercase;
-  text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 30px rgba(0,0,0,0.6);
 }
-
-@media (min-width: 768px) {
-  .hero-word { font-size: 13vw; }
-}
+@media (min-width: 768px) { .hero-word { font-size: 13vw; } }
 
 .word-1 { left: 3%; top: 16%; }
 .word-2 { right: 3%; top: 37%; }
@@ -189,37 +181,104 @@ nav {
   max-width: 210px;
   font-size: 13px;
   line-height: 1.55;
-  color: rgba(255,255,255,0.80);
+  color: rgba(255,255,255,0.75);
   font-weight: 300;
-  letter-spacing: 0.2px;
 }
+@media (min-width: 768px) { .hero-desc { left: 2.5%; max-width: 240px; font-size: 14px; } }
 
-@media (min-width: 768px) {
-  .hero-desc { left: 2.5%; max-width: 240px; font-size: 14px; }
-}
-
-.hero-gradient {
-  pointer-events: none;
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 220px;
-  background: linear-gradient(to bottom, transparent, #000);
-}
-
-/* ===== STAT BLOCKS ===== */
+/* ===== STATS ===== */
 .stat { position: absolute; }
 
-.stat-top-right {
-  top: 13%;
-  right: 20px;
-  text-align: right;
-}
-
+.stat-top-right { top: 13%; right: 20px; text-align: right; }
 @media (min-width: 768px) { .stat-top-right { right: 96px; } }
 
-.stat-bottom-left {
-  bottom: 72px;
-  left: 20px;
+.stat-bottom-left { bottom: 72px; left: 20px; }
+@media (min-width: 768px) { .stat-bottom-left { left: 80px; bottom: 96px; } }
+
+.stat-bottom-right { bottom: 56px; right: 20px; text-align: right; }
+@media (min-width: 768px) { .stat-bottom-right { right: 80px; bottom: 80px; } }
+
+.stat-row { display: flex; align-items: center; gap: 12px; }
+.stat-row.right { justify-content: flex-end; }
+
+.stat-num {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
 
-@media (min-width: 768px) {
+.stat-divider { display: none; height: 1px; width: 80px; background: rgba(255,255,255,0.35); flex-shrink: 0; }
+@media (min-width: 768px) { .stat-divider { display: block; } }
+
+.rot-pos { transform: rotate(20deg); }
+.rot-neg { transform: rotate(-20deg); }
+
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 300;
+}
+
+/* ===== TICKER ===== */
+.ticker {
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 13px 0;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 70s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track span {
+  display: inline-block;
+  margin-right: 55px;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
+  color: rgba(160, 195, 255, 0.70);
+  flex-shrink: 0;
+}
+
+.ticker:hover .ticker-track { animation-play-state: paused; }
+
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== SHOP ===== */
+.shop { padding: 80px 32px; background: #000; }
+@media (max-width: 600px) { .shop { padding: 60px 16px; } }
+
+.shop-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  gap: 16px;
+}
+
+.shop-header h2 {
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+.shop-header span {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;

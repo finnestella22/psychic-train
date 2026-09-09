@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rag's Rags — NY Hockey Streetwear</title>
-<meta name="description" content="NY Hockey inspired streetwear. Limited drops. Custom requests. Built for MSG nights.">
-<meta name="keywords" content="New York hockey apparel, NY hockey streetwear, hockey hoodie, MSG apparel, Broadway Blueshirts">
+<title>Section 222 — NY Hockey Lifestyle</title>
+<meta name="description" content="Section 222 is an independent NY hockey lifestyle label. Small-batch drops for the section that never left.">
 
-<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://db.onlinewebfonts.com/c/ce3e2c88798591d8ea995e084e8f9f62?family=NHL+NY+Rangers+Outline" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Graduate&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
+
+:root {
+  --blue: #0038a8;
+  --blue-light: rgba(160, 195, 255, 0.75);
+}
 
 body {
   font-family: 'Readex Pro', system-ui, -apple-system, sans-serif;
@@ -23,7 +26,8 @@ body {
 }
 
 .hero-title {
-  letter-spacing: -0.04em;
+  font-family: 'Oswald', system-ui, sans-serif;
+  letter-spacing: -0.01em;
   line-height: 0.95;
 }
 
@@ -97,18 +101,26 @@ nav {
   border: 1px solid rgba(255,255,255,0.12);
 }
 
-.nav-shield {
-  width: 22px;
-  height: 22px;
+.brand-badge {
+  font-family: 'Graduate', 'Oswald', serif;
+  font-size: 13px;
+  line-height: 1;
+  color: #fff;
+  background: var(--blue);
+  border: 1.5px solid rgba(255,255,255,0.5);
+  border-radius: 5px;
+  padding: 5px 7px 4px;
   flex-shrink: 0;
 }
 
 .nav-logo-text {
-  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
+  font-family: 'Oswald', Arial, sans-serif;
+  font-weight: 600;
   font-size: 13px;
   letter-spacing: 2.5px;
   color: #fff;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .nav-center {
@@ -234,17 +246,18 @@ nav {
 .stat-row.right { justify-content: flex-end; }
 
 .stat-num {
+  font-family: 'Oswald', sans-serif;
   font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 600;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
 .stat-divider {
   display: none;
-  height: 1px;
+  height: 2px;
   width: 80px;
-  background: rgba(255,255,255,0.35);
+  background: var(--blue-light);
   flex-shrink: 0;
 }
 @media (min-width: 768px) { .stat-divider { display: block; } }
@@ -282,10 +295,11 @@ nav {
   display: inline-block;
   margin-right: 55px;
   font-size: 13px;
+  font-weight: 600;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
-  color: rgba(160, 195, 255, 0.70);
+  font-family: 'Oswald', Arial, sans-serif;
+  color: var(--blue-light);
   flex-shrink: 0;
 }
 
@@ -312,11 +326,15 @@ nav {
 }
 
 .shop-header h2 {
+  font-family: 'Oswald', sans-serif;
   font-size: clamp(2.2rem, 5.5vw, 4.5rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   line-height: 0.95;
+  border-bottom: 4px solid var(--blue);
+  padding-bottom: 8px;
+  display: inline-block;
 }
 
 .shop-header span {
@@ -350,10 +368,40 @@ nav {
 
 .product:hover img { transform: scale(1.05); }
 
+.product-placeholder {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #0a0e1a, #000);
+  transition: transform 0.5s ease;
+}
+
+.product:hover .product-placeholder { transform: scale(1.05); }
+
+.product-placeholder span {
+  font-family: 'Graduate', serif;
+  font-size: 4rem;
+  color: rgba(160, 195, 255, 0.16);
+}
+
+.product-tag {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  border: 1px solid rgba(160, 195, 255, 0.4);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
 .product-info { padding: 14px 14px 16px; }
 
 .product-name {
-  font-size: 12px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -384,11 +432,15 @@ nav {
 }
 
 .news-header h2 {
+  font-family: 'Oswald', sans-serif;
   font-size: clamp(2.2rem, 5.5vw, 4.5rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   line-height: 0.95;
+  border-bottom: 4px solid var(--blue);
+  padding-bottom: 8px;
+  display: inline-block;
 }
 
 .news-header span {
@@ -432,7 +484,8 @@ nav {
 }
 
 .news-title {
-  font-size: 15px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.3;
@@ -465,9 +518,10 @@ nav {
 @media (max-width: 600px) { .contact { padding: 60px 20px; flex-direction: column; } }
 
 .contact-left h2 {
+  font-family: 'Oswald', sans-serif;
   font-size: clamp(3rem, 8vw, 6.5rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01em;
   line-height: 0.92;
   text-transform: uppercase;
 }
@@ -520,9 +574,11 @@ footer {
 }
 
 .footer-logo {
-  font-family: "NHL NY Rangers Outline", Arial, sans-serif;
+  font-family: 'Oswald', Arial, sans-serif;
+  font-weight: 600;
   font-size: 13px;
   letter-spacing: 2.5px;
+  text-transform: uppercase;
   color: rgba(255,255,255,0.3);
 }
 
@@ -540,7 +596,7 @@ footer {
 
   <!-- Photo + blue wash clipped to cursor circle -->
   <div class="hero-spotlight" id="heroSpotlight">
-    <img class="hero-bg" src="photo2.png" alt="RAG'S RAGS">
+    <img class="hero-bg" src="crew.png" alt="Section 222 crew">
     <div class="hero-blue-wash"></div>
   </div>
 
@@ -550,11 +606,8 @@ footer {
   <!-- Navbar always on top -->
   <nav>
     <div class="nav-left">
-      <svg class="nav-shield" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16 1L2 7v11c0 9 6 16 14 17 8-1 14-8 14-17V7L16 1z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4"/>
-        <text x="7.5" y="22" fill="white" font-size="10" font-weight="700" font-family="Arial, sans-serif">NY</text>
-      </svg>
-      <span class="nav-logo-text">RAG'S RAGS</span>
+      <span class="brand-badge">222</span>
+      <span class="nav-logo-text">SECTION 222</span>
     </div>
     <div class="nav-center">
       <a href="#shop">shop</a>
@@ -563,7 +616,7 @@ footer {
       <a href="mailto:finnestella222@gmail.com?subject=Custom%20Design%20Request">custom</a>
       <a href="#contact">contact</a>
     </div>
-    <a class="nav-right" href="mailto:finnestella222@gmail.com?subject=Rags%20Rags%20Order">Order Now</a>
+    <a class="nav-right" href="mailto:finnestella222@gmail.com?subject=Section%20222%20Order">Order Now</a>
   </nav>
 
   <!-- Text always on top -->
@@ -572,7 +625,7 @@ footer {
     <h1 class="hero-title hero-word word-2">BLUE</h1>
     <h1 class="hero-title hero-word word-3">NYC</h1>
 
-    <p class="hero-desc">NY hockey streetwear. Prints on Comfort Colors blanks. Limited drops. Custom requests.</p>
+    <p class="hero-desc">An independent NY hockey label. Small-batch runs on heavyweight blanks — once they're gone, they're gone.</p>
 
     <div class="stat stat-top-right">
       <div class="stat-row right">
@@ -595,7 +648,7 @@ footer {
         <div class="stat-divider rot-neg"></div>
         <span class="stat-num">222</span>
       </div>
-      <p class="stat-label">section faithful</p>
+      <p class="stat-label">the section we're named for</p>
     </div>
   </div>
 
@@ -608,22 +661,14 @@ footer {
     <span>FIRE DRURY</span><span>✦</span>
     <span>BLEED BLUE</span><span>✦</span>
     <span>WE'LL WIN TONIGHT</span><span>✦</span>
-    <span>BROADWAY BLUESHIRT APPAREL</span><span>✦</span>
     <span>NEXT QUESTION</span><span>✦</span>
-    <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span><span>✦</span>
     <span>SKATE BOYS!</span><span>✦</span>
-    <span>DESIGNED IN MANHATTAN</span><span>✦</span>
     <span>HANK I LOVE YOU!</span><span>✦</span>
-    <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span><span>✦</span>
     <span>RUN THE GOALIE</span><span>✦</span>
-    <span>NEW YORK HOCKEY CULTURE</span><span>✦</span>
-    <span>MADE FOR MSG NIGHTS</span><span>✦</span>
     <span>IGOR IGOR IGOR</span><span>✦</span>
-    <span>FOR THOSE WHO KNOW THE GARDEN</span><span>✦</span>
     <span>ZUUCCCCCCC</span><span>✦</span>
     <span>FOR THE FAITHFUL IN SECTION 222</span><span>✦</span>
     <span>OH GOD JT MILLER AGAIN</span><span>✦</span>
-    <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span><span>✦</span>
     <span>BING BONG</span><span>✦</span>
     <span>POTVIN SUCKS</span><span>✦</span>
     <span>GO NY GO NY GO</span><span>✦</span>
@@ -633,26 +678,20 @@ footer {
     <span>TIMBS WEATHER</span><span>✦</span>
     <span>ITS A POWER PLAY GOAL</span><span>✦</span>
     <span>TRADE CONOR SHEARY</span><span>✦</span>
+    <span>KREIDER COME HOME</span><span>✦</span>
+    <span>ALMOST THE OFFSEASON</span><span>✦</span>
     <span>NO QUIT IN NEW YORK</span><span>✦</span>
     <span>FIRE DRURY</span><span>✦</span>
     <span>BLEED BLUE</span><span>✦</span>
     <span>WE'LL WIN TONIGHT</span><span>✦</span>
-    <span>BROADWAY BLUESHIRT APPAREL</span><span>✦</span>
     <span>NEXT QUESTION</span><span>✦</span>
-    <span>BUILT FOR THE WORLD'S MOST FAMOUS ARENA</span><span>✦</span>
     <span>SKATE BOYS!</span><span>✦</span>
-    <span>DESIGNED IN MANHATTAN</span><span>✦</span>
     <span>HANK I LOVE YOU!</span><span>✦</span>
-    <span>INSPIRED BY THE CITY THAT NEVER SLEEPS</span><span>✦</span>
     <span>RUN THE GOALIE</span><span>✦</span>
-    <span>NEW YORK HOCKEY CULTURE</span><span>✦</span>
-    <span>MADE FOR MSG NIGHTS</span><span>✦</span>
     <span>IGOR IGOR IGOR</span><span>✦</span>
-    <span>FOR THOSE WHO KNOW THE GARDEN</span><span>✦</span>
     <span>ZUUCCCCCCC</span><span>✦</span>
     <span>FOR THE FAITHFUL IN SECTION 222</span><span>✦</span>
     <span>OH GOD JT MILLER AGAIN</span><span>✦</span>
-    <span>FOR THE FANS WHO STAY TILL THE FINAL BUZZER</span><span>✦</span>
     <span>BING BONG</span><span>✦</span>
     <span>POTVIN SUCKS</span><span>✦</span>
     <span>GO NY GO NY GO</span><span>✦</span>
@@ -662,6 +701,8 @@ footer {
     <span>TIMBS WEATHER</span><span>✦</span>
     <span>ITS A POWER PLAY GOAL</span><span>✦</span>
     <span>TRADE CONOR SHEARY</span><span>✦</span>
+    <span>KREIDER COME HOME</span><span>✦</span>
+    <span>ALMOST THE OFFSEASON</span><span>✦</span>
   </div>
 </div>
 
@@ -673,42 +714,35 @@ footer {
   </div>
   <div class="grid">
     <div class="product">
-      <div class="product-img-wrap"><img src="photo3.png" alt="NY Hockey Hoodie"></div>
+      <div class="product-img-wrap"><div class="product-placeholder"><span>222</span></div></div>
       <div class="product-info">
-        <div class="product-name">NY Hockey Hoodie</div>
-        <div class="product-sub">Limited Drop</div>
+        <div class="product-name">222 Varsity Tee</div>
+        <div class="product-tag">Founding Drop — Concept</div>
       </div>
     </div>
     <div class="product">
-      <div class="product-img-wrap"><img src="photo4.png" alt="Ragoos Flag"></div>
+      <div class="product-img-wrap"><div class="product-placeholder"><span>222</span></div></div>
       <div class="product-info">
-        <div class="product-name">Ragoos Flag</div>
-        <div class="product-sub">Limited Drop</div>
+        <div class="product-name">Broadway Blueshirt Hoodie</div>
+        <div class="product-tag">Founding Drop — Concept</div>
       </div>
     </div>
     <div class="product">
-      <div class="product-img-wrap"><img src="photo5.png" alt="Nicks Six"></div>
+      <div class="product-img-wrap"><div class="product-placeholder"><span>222</span></div></div>
       <div class="product-info">
-        <div class="product-name">Nicks Six</div>
-        <div class="product-sub">Limited Drop</div>
+        <div class="product-name">Home Ice Flag</div>
+        <div class="product-tag">Founding Drop — Concept</div>
       </div>
     </div>
     <div class="product">
-      <div class="product-img-wrap"><img src="photo6.png" alt="51 at Half"></div>
-      <div class="product-info">
-        <div class="product-name">51 at Half</div>
-        <div class="product-sub">Limited Drop</div>
-      </div>
-    </div>
-    <div class="product">
-      <div class="product-img-wrap"><img src="photo7.png" alt="Coming Soon"></div>
+      <div class="product-img-wrap"><div class="product-placeholder"><span>?</span></div></div>
       <div class="product-info">
         <div class="product-name">Dropping Soon</div>
         <div class="product-sub">Stay Ready</div>
       </div>
     </div>
     <div class="product">
-      <div class="product-img-wrap"><img src="photo8.png" alt="Coming Soon"></div>
+      <div class="product-img-wrap"><div class="product-placeholder"><span>?</span></div></div>
       <div class="product-info">
         <div class="product-name">Dropping Soon</div>
         <div class="product-sub">Stay Ready</div>
@@ -734,15 +768,15 @@ footer {
     <h2>Order.<br>Custom.<br>Now.</h2>
   </div>
   <div class="contact-right">
-    <p>Email to purchase or drop a custom design request. Built for MSG nights.</p>
-    <a class="btn-primary" href="mailto:finnestella222@gmail.com?subject=Rags%20Rags%20Order">Contact Us</a>
+    <p>Email to order or send a custom design request.</p>
+    <a class="btn-primary" href="mailto:finnestella222@gmail.com?subject=Section%20222%20Order">Contact Us</a>
   </div>
 </div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <span class="footer-logo">RAG'S RAGS</span>
-  <span class="footer-copy">© 2024 Rag's Rags — NY Hockey Culture</span>
+  <span class="footer-logo">Section 222</span>
+  <span class="footer-copy">© 2026 Section 222 — NY Hockey Lifestyle</span>
 </footer>
 
 <script>
